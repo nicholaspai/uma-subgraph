@@ -5,7 +5,6 @@ import {
 } from "../../generated/Registry/Registry";
 import { CreatedExpiringMultiParty } from "../../generated/templates/ExpiringMultiPartyCreator/ExpiringMultiPartyCreator";
 import { ExpiringMultiParty } from "../../generated/templates/ExpiringMultiParty/ExpiringMultiParty";
-import { log, Bytes, Address } from "@graphprotocol/graph-ts";
 import {
   getOrCreateFinancialContract,
   getOrCreateUser,
@@ -18,14 +17,13 @@ import { toDecimal } from "../utils/decimals";
 
 // - event: NewContractRegistered(indexed address,indexed address,address[])
 //   handler: handleNewContractRegistered
-
 export function handleNewContractRegistered(
   event: NewContractRegistered
 ): void {
   if (
     event.params.contractAddress.toHexString() != GOVERNOR_ADDRESS_STRING &&
     !BLACKLISTED_CREATORS.includes(event.params.creator.toHexString())
-  ) {    
+  ) {
     let contract = getOrCreateFinancialContract(
       event.params.contractAddress.toHexString()
     );
