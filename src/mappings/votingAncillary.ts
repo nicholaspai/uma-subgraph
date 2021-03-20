@@ -7,8 +7,8 @@ import {
     RewardsRetrieved,
     SetGatPercentageCall,
     SetInflationRateCall,
-    Voting
-  } from "../../generated/Voting/Voting";
+    VotingAncillary as Voting
+  } from "../../generated/VotingAncillary/VotingAncillary";
   import { VoterGroup } from "../../generated/schema";
   import {
     getOrCreateUser,
